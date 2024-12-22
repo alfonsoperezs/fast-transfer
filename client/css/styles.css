@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+body {
+    background-color: rgb(24, 24, 48);
+}
+
+.view-content {
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
