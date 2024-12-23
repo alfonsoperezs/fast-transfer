@@ -19,10 +19,10 @@
         <section id="view-content" class="view-content"></section>
         <section>
             <div class="container">
-                <form id="upload-form">
+                <form id="upload-form" onsubmit="onSubmitClick(event)">
                     <label for="arquivo">Choose files to upload:</label>
                     <input multiple accept=".jpg, .jpeg, .png, .gif, .pdf" class="inpdddut" name="file" id="arquivo" type="file">
-                    <input value="Upload" type="submit" class="inpdddut">
+                    <input value="Upload" type="submit" class="inpdddut" >
                 </form>
             </div>
         </section>

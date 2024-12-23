@@ -20,3 +20,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 });
+
+async function onSubmitClick(event){
+    event.preventDefault();
+    const fileInput = document.getElementById("arquivo");
+    const files = fileInput.files;
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append("file", files[i]);
+    }
+    const response = await fetch("http://192.168.0.18:8000/upload", {
+        method: "POST",
+        body: formData,
+    });
+}
