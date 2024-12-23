@@ -8,10 +8,13 @@ CORS(app)
 
 @app.route('/upload', methods=['POST'])
 def upload():
-   file = request.files['file']
-   filepath = os.path.join(PATH, file.filename)
-   file.save(filepath)
-   return jsonify({"message": "File uploaded successfully", "path": filepath}), 200
+    filelist = request.files.getlist('file')
+    save_file = []
+    for file in filelist:
+        file_path = os.path.join(PATH, file.filename)
+        file.save(file_path)
+        save_file.append(file.filename)
+    return jsonify({'message': 'Files uploaded successfully', 'files': save_file})
 
 @app.route('/files', methods=['GET'])
 def files():
