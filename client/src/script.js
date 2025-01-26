@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    console.log(config.host)
     const section = document.getElementById('view-content')
-    const response = await fetch('http://192.168.0.18:8000/files');
+    const response = await fetch(`${config.host}:${config.port}/files`);
     const data = await response.json();
     const dirList = data.content.directories;
     const fileList = data.content.files;
@@ -29,7 +30,7 @@ async function onSubmitClick(event){
     for (let i = 0; i < files.length; i++) {
         formData.append("file", files[i]);
     }
-    const response = await fetch("http://192.168.0.18:8000/upload", {
+    const response = await fetch(`${config.host}:${config.port}/upload`, {
         method: "POST",
         body: formData,
     });
