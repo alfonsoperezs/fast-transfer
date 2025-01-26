@@ -9,6 +9,8 @@ CORS(app)
 @app.route('/upload', methods=['POST'])
 def upload():
     filelist = request.files.getlist('file')
+    if filelist == [] :
+        return jsonify({'message': 'There is no files'}), 400
     save_file = []
     for file in filelist:
         file_path = os.path.join(PATH, file.filename)
