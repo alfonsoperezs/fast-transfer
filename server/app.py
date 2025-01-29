@@ -16,7 +16,7 @@ def upload():
         file_path = os.path.join(PATH, file.filename)
         file.save(file_path)
         save_file.append(file.filename)
-    return jsonify({'message': 'Files uploaded successfully', 'files': save_file})
+    return jsonify({'message': 'Files uploaded successfully', 'files': save_file}), 201
 
 @app.route('/files', methods=['GET'])
 def files():

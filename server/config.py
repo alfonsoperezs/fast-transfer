@@ -1,1 +1,1 @@
-PATH = "/mnt/c/Users/alfon/Documents/test"
+PATH = "/home/alfonsoperezs/proyectos/fast-transfer/test"
