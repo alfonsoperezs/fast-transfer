@@ -17,8 +17,8 @@ body {
     display: flex;
     margin-top: 1%;
     margin-bottom: 2%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
     overflow-y: auto;     
     max-height: 300px;
     height: 300px;
@@ -26,3 +26,32 @@ body {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.219);
 }
+
+.content-sticker {
+    margin: 15px;
+    display: flex;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(129, 128, 128, 0.445);
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.content-sticker img{
+    height: 60%;
+}
+
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    background-color: #ffffff; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+  
