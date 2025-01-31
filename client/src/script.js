@@ -14,6 +14,7 @@ async function onSubmitClick(event){
         method: "POST",
         body: formData,
     });
+    
 }
 
 async function getAndPrintFiles(){
@@ -30,7 +31,6 @@ async function getAndPrintFiles(){
             if(sticker != null){
                 section.appendChild(sticker);
             }
-            
         }
         for(const file of fileList){
             sticker = buildSticker("file", file);
@@ -38,5 +38,8 @@ async function getAndPrintFiles(){
                 section.appendChild(sticker);
             }
         }
+    } else{
+        console.log("euy")
+        generateError("Cannot connect with the server", "Verify if the server is running")
     }
 } 

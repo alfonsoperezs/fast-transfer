@@ -55,3 +55,8 @@ body {
     cursor: pointer; 
 }
   
+.error{
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+}
