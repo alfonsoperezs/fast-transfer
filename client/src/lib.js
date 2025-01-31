@@ -84,7 +84,7 @@ function generateError(header, suggestion) {
     errorAlert.appendChild(flexDiv);
     container.appendChild(errorAlert);
     
-    error.appendChild(err);
+    error.appendChild(container);
 }
 
 function removeError() {

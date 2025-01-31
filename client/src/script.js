@@ -4,17 +4,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function onSubmitClick(event){
     event.preventDefault();
+    removeError();
     const fileInput = document.getElementById("arquivo");
     const files = fileInput.files;
     const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-        formData.append("file", files[i]);
+    if(files.length == 0){
+        generateError("No files", "You need to select at least one file.");
+    }else{
+        for (let i = 0; i < files.length; i++) {
+            formData.append("file", files[i]);
+        }
+        const response = await fetch(`${url}:${port}/upload`, {
+            method: "POST",
+            body: formData,
+        });
     }
-    const response = await fetch(`${url}:${port}/upload`, {
-        method: "POST",
-        body: formData,
-    });
-    
 }
 
 async function getAndPrintFiles(){
@@ -38,8 +42,5 @@ async function getAndPrintFiles(){
                 section.appendChild(sticker);
             }
         }
-    } else{
-        console.log("euy")
-        generateError("Cannot connect with the server", "Verify if the server is running")
-    }
+    } 
 } 
