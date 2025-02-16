@@ -21,12 +21,25 @@ async function onSubmitClick(event){
     }
 }
 
+async function onDownloadClick(event) {
+    const fileName = event.target.closest("div").querySelector("p").textContent; // accedemos al elemento
+    const blob = await getFilesByName(fileName);
+    const urlBlob = URL.createObjectURL(blob); // url temporal para acceder al archivo
+    const a = document.createElement("a");
+    a.href = urlBlob;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(urlBlob);  // liberamos memoria
+}
+
+
 async function getAndPrintFiles(){
     const section = document.getElementById('view-content');
     const response = await fetch(`${url}:${port}/files`);
     if(response.ok){
         const data = await response.json();
-        console.log(data);
         const dirList = data.content.directories;
         const fileList = data.content.files;
         let sticker;
@@ -44,3 +57,4 @@ async function getAndPrintFiles(){
         }
     } 
 } 
+

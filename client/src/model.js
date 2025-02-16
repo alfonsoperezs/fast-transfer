@@ -12,3 +12,8 @@ async function uploadFiles(formData){
         body: formData,
     });
 }
+
+async function getFilesByName(fileName){
+    const response = await fetch(`${url}:${port}/files/${fileName}`)
+    return await response.blob();
+}

@@ -18,6 +18,7 @@ function buildSticker(type, name) {
     const button = document.createElement("button");
     button.classList.add("btn-download");
     button.textContent = "Download";
+    button.onclick = onDownloadClick;
 
     div.appendChild(img);
     div.appendChild(p);
