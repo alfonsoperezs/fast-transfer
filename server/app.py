@@ -2,6 +2,7 @@ from flask import Flask, send_file, jsonify
 import os
 from config import *
 from flask_cors import CORS
+import shutil
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +35,14 @@ def files():
 @app.route('/files/<name>', methods=['GET'])
 def get_file_by_name(name):
     absolute_path = os.path.join(PATH, name)
-    return send_file(absolute_path, as_attachment=True) # descarga
+    if os.path.isdir(absolute_path): # caso descarga directorio
+        zip = f"{name}.zip"
+        shutil.make_archive(name, 'zip', absolute_path)
+        response = send_file(zip, as_attachment=True)
+        os.remove(zip)
+    else:
+        response = send_file(absolute_path, as_attachment=True)
+    return response
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=8000, debug=True)
